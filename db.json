@@ -1,0 +1,94 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Что такое значение числа Пи (π)?",
+      "answers": ["3.14", "2.71", "1.61", "4.20"],
+      "correctAnswerIndex": 0,
+      "image": "https://m.media-amazon.com/images/M/MV5BMTg4NTczNTk1N15BMl5BanBnXkFtZTcwNjg0MDE2MQ@@._V1_.jpg",
+      "altForImage": "число пи"
+    },
+    {
+      "id": 2,
+      "question": "Как называется теорема, которая устанавливает связь между сторонами прямоугольного треугольника?",
+      "answers": [
+        "Теорема Пифагора",
+        "Теорема Ферма",
+        "Теорема Эйлера",
+        "Теорема Ньютона"
+      ],
+      "correctAnswerIndex": 0,
+      "image": "http://papakarp.ru/wp-content/uploads/2021/01/teorema-pifagora-1.png",
+      "altForImage": "треугольник"
+    },
+    {
+      "id": 3,
+      "question": "Чему равен квадратный корень из 144?",
+      "answers": ["10", "12", "14", "16"],
+      "correctAnswerIndex": 1,
+      "image": "https://i.ytimg.com/vi/ORl6bdJW89o/maxresdefault.jpg",
+      "altForImage": "корень 144"
+    },
+    {
+      "id": 4,
+      "question": "Какое из следующих чисел является простым?",
+      "answers": ["25", "39", "47", "50"],
+      "correctAnswerIndex": 2,
+      "image": "https://static.scientificamerican.com/blogs/cache/file/BEBE6671-BEED-4C38-A4944F1FF4B468B2_source.jpg?w=590&h=800&63F44639-D091-4B2D-A643B8327EADDE9B",
+      "altForImage": "скульптура Passing Time"
+    },
+    {
+      "id": 5,
+      "question": "Чему равен синус угла в 90 градусов?",
+      "answers": ["1", "0", "-1", "0.5"],
+      "correctAnswerIndex": 1,
+      "image": "https://cdn4.iconfinder.com/data/icons/flat-docflow/512/graph-512.png",
+      "altForImage": "граф синуса"
+    },
+    {
+      "id": 6,
+      "question": "Как называется процесс умножения числа самого на себя?",
+      "answers": ["Сложение", "Вычитание", "Умножение", "Возведение в степень"],
+      "correctAnswerIndex": 2,
+      "image": "https://cdn2.iconfinder.com/data/icons/mathematics-geometry/154/math-function-mathematical-x-power-n-512.png",
+      "altForImage": "степень"
+    },
+    {
+      "id": 7,
+      "question": "Как называется число, которое делится нацело на все числа от 1 до 10?",
+      "answers": ["Простое число", "Составное число", "Факториал", "Кратное"],
+      "correctAnswerIndex": 2,
+      "image": "https://cdn-icons-png.flaticon.com/512/9989/9989608.png",
+      "altForImage": "факториал"
+    },
+    {
+      "id": 8,
+      "question": "Какой тип угла меньше 90 градусов?",
+      "answers": ["Тупой", "Прямой", "Острый", "Полный"],
+      "correctAnswerIndex": 2,
+      "image": "https://itest.kz/uploads/images/7_%D0%A3%D0%B3%D0%BE%D0%BB%20%D0%B8%20%D0%B5%D0%B3%D0%BE%20%D1%81%D0%B2%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%B0_01-01.svg",
+      "altForImage": "острый угол"
+    },
+    {
+      "id": 9,
+      "question": "Чему равно значение числа 'е' (экспонента)?",
+      "answers": ["2.71", "3.14", "1.61", "4.20"],
+      "correctAnswerIndex": 0,
+      "image": "https://avatars.dzeninfra.ru/get-zen-logos/246004/pub_5e7dddebb4275636bef79d02_62547cb8497433129aa295fb/xxh",
+      "altForImage": "экспонента"
+    },
+    {
+      "id": 10,
+      "question": "К какому множеству относится число √2 (корень из двух)?",
+      "answers": [
+        "Множество натуральных чисел",
+        "Множество целых чисел",
+        "Множество рациональных чисел",
+        "Множество иррациональных чисел"
+      ],
+      "correctAnswerIndex": 3,
+      "image": "https://www.mathsisfun.com/numbers/images/sqrt2.svg",
+      "altForImage": "корень из 2"
+    }
+  ]
+}

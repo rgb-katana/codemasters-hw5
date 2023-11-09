@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./index.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">Домашняя работа 5</h1>
+      <p class="header__description">
+        <em>Реализовать квиз на любую тему</em>
+      </p>
+    </header>
+    <main class="main">
+      <div class="quiz">
+        <div class="quiz__heading">
+          <h2 class="quiz__title">Простой квиз</h2>
+          <div class="quiz__progress progress">
+            <b class="progress__current">1</b> of
+            <b class="quiz__total">10</b>
+          </div>
+          <div class="quiz__score">Score: <b class="score">0</b></div>
+        </div>
+        <div class="quiz__base base">
+          <!-- здесь кнопка начать или далее и сами вопросы с ответами -->
+          <!-- <button type="button" class="quiz__button_main">Начать квиз</button> -->
+          <img
+            class="base__image"
+            src="https://www.mathsisfun.com/numbers/images/sqrt2.svg"
+            alt="something"
+          />
+          <h2 class="base__question">Первый вопрос?</h2>
+          <ul class="base__answers">
+            <li class="base__answer">
+              <button class="quiz__button_secondary">Ответ 1</button>
+            </li>
+            <li class="base__answer">
+              <button class="quiz__button_secondary">Ответ 2</button>
+            </li>
+            <li class="base__answer">
+              <button class="quiz__button_secondary">Ответ 3</button>
+            </li>
+            <li class="base__answer">
+              <button class="quiz__button_secondary">Ответ 4</button>
+            </li>
+          </ul>
+        </div>
+        <div class="quiz__status">
+          <!-- Здесь будет статус ответа -->
+          <button class="button-next">Следующий</button>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__credentials">(c) простой квиз codemasters дз5</div>
+    </footer>
+  </body>
+</html>
