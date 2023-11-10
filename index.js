@@ -120,7 +120,6 @@ function finishGame() {
 }
 
 quizElement.addEventListener('click', function (e) {
-  console.log(e.target.classList);
   if (e.target.classList.contains('quiz__button_main')) {
     currentQuestion = 0;
     currentRightAnswer = -1;
