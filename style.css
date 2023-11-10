@@ -13,11 +13,15 @@
   --container-color: #172554;
   --container-color-reversed: #eff6ff;
   --text-color: #eff6ff;
-  --text-color-reversed: #172554;
-  --button-main-color: #0ea5e9;
-  --button-main-color-hovered: #93c5fd;
+  --text-color-reversed: #1e3a8a;
+  --button-main-color: #1d4ed8;
+  --button-main-color-hovered: #3b82f6;
   --button-main-color-submit-border: #7ed321;
   --button-main-color-submit-bg: #a8df6e;
+  --button-secondary-color: #7dd3fc;
+  --button-secondary-color-hovered: #bae6fd;
+  --button-secondary-color-submit-border: #2dd4bf;
+  --button-secondary-color-submit-bg: #5eead4;
 }
 
 body {
@@ -114,6 +118,7 @@ footer {
   border-radius: 8px;
   outline: none;
 
+  color: var(--text-color);
   background-color: var(--button-main-color);
   border: 3px solid var(--button-main-color-hovered);
 }
@@ -155,4 +160,68 @@ footer {
 
 .base__question {
   margin-bottom: 20px;
+}
+
+.show-button {
+  display: block;
+}
+
+.hide-button {
+  display: none;
+}
+
+.quiz__progress_end {
+  margin-bottom: 25px;
+}
+
+.quiz__button_secondary {
+  padding: 3px 2px;
+  border-radius: 8px;
+  outline: none;
+
+  background-color: var(--button-secondary-color);
+  border: 1px solid var(--button-secondary-color-hovered);
+}
+
+.quiz__button_secondary:hover:not(:disabled) {
+  background-color: var(--button-secondary-color-hovered);
+  box-shadow: 0 0 0 1px var(--button-secondary-color-color);
+}
+
+.quiz__button_secondary:focus {
+  background-color: var(--button-secondary-color-hovered);
+  box-shadow: 0 0 0 1px var(--button-secondary-color-color);
+}
+
+.quiz__button_secondary:active {
+  box-shadow: 0 0 0 2px var(--button-secondary-color-submit-border);
+  border: none;
+  background-color: var(--button-secondary-color-submit-bg);
+}
+
+.correct-answer {
+  background-color: greenyellow;
+}
+
+.wrong-answer {
+  background-color: orangered;
+}
+
+.button-next {
+  outline: none;
+  background-color: #eff6ff;
+  padding: 3px 4px;
+  border-radius: 6px;
+}
+
+.button-next:hover {
+  background-color: #e6fdcc;
+}
+
+.button-next:focus {
+  background-color: #e6fdcc;
+}
+
+.button-next:active {
+  background-color: #a8eb5b;
 }
