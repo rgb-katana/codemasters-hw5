@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "live-server"
+    "start": "live-server",
+    "serve-json": "json-server --watch ./db.json"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "live-server": "^1.2.2",
-    "serve-json": "json-server --watch db.json"
+    "live-server": "^1.2.2"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4"
   }
 }
