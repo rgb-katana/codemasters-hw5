@@ -7,12 +7,7 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 
 // Add custom routes before JSON Server router
-// server.use(jsonServer.bodyParser);
-// server.post('/calculate-result', (req, res) => {
-//   const questions = router.db.get('questions').value();
-//   const answers = req.body.answers;
-//   let correctAnswers = 0;
-// });
+server.use(jsonServer.bodyParser);
 
 // Use default router
 server.use(router);

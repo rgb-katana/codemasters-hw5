@@ -1,3 +1,5 @@
+import * as restService from './rest.js';
+
 // селекторы
 const progressCurrentElement = document.querySelector('.progress__current');
 const scoreElement = document.querySelector('.score');
@@ -7,7 +9,6 @@ const nextButton = document.querySelector('.button-next');
 
 // QUIZ main variables
 let currentQuestion = 0;
-let currentRightAnswer = -1;
 let totalScore = 0;
 
 function generateImageHTML(link, alt) {
@@ -43,9 +44,7 @@ async function generateQuestionBlock(question) {
   quizBaseElement.innerHTML = '';
 
   try {
-    const response = await fetch(`http://localhost:3000/questions/${question}`);
-    const data = await response.json();
-    currentRightAnswer = data.correctAnswerIndex;
+    const data = await restService.get(`questions/${question}`);
     quizBaseElement.insertAdjacentHTML(
       'afterbegin',
       generateQuestionAnswersHTML(data.question, data.answers)
@@ -59,8 +58,10 @@ async function generateQuestionBlock(question) {
   }
 }
 
-function countOneQuestion(userPick) {
-  const isUserCorrect = currentRightAnswer === userPick;
+async function countOneQuestion(userPick) {
+  const result = await restService.get(`answers/${currentQuestion}`);
+  const currentRightAnswer = result.correctIndex;
+  const isUserCorrect = userPick === currentRightAnswer;
 
   const correctElement = document.querySelector(
     `[data-answer-number="${currentRightAnswer}"]`
@@ -122,7 +123,6 @@ function finishGame() {
 quizElement.addEventListener('click', function (e) {
   if (e.target.classList.contains('quiz__button_main')) {
     currentQuestion = 0;
-    currentRightAnswer = -1;
     totalScore = 0;
     scoreElement.textContent = 0;
     updateProgress();
