@@ -51,7 +51,7 @@ async function generateQuestionBlock(question) {
     );
     quizBaseElement.insertAdjacentHTML(
       'afterbegin',
-      generateImageHTML(data.image)
+      generateImageHTML(data.image) /* Тут не используется alt*/
     );
   } catch (error) {
     console.error(error);
@@ -120,8 +120,14 @@ function finishGame() {
   );
 }
 
+/*
+ Не лучшая идея добавлять такой обработчик. Он будет срабатывать на все клики внутри формы, это удар по производительности (небольшой но всё же)
+  Тут стоит получть конкретную кнопку по её id и добавить обработчик конкретно к ней. Тогда еще и проблема с тем что функция делает много всего пропадёт
+*/
 quizElement.addEventListener('click', function (e) {
-  if (e.target.classList.contains('quiz__button_main')) {
+  /* Эта функция делает слишком много всего, лучше разбить её на несколько, так и тестировать проще будет*/
+
+  if (e.target.classList.contains('quiz__button_main')) {  // Тут лучше пологаться на id поскольку quiz__button_main может быть чем угодно, судя по названию
     currentQuestion = 0;
     totalScore = 0;
     scoreElement.textContent = 0;

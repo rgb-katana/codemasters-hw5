@@ -63,7 +63,7 @@ footer {
   background-color: var(--container-color-reversed);
   color: var(--text-color-reversed);
 
-  width: 700px;
+  width: 700px; /* Я всё вижу. Не забывай про БЭМ*/
   height: 600px;
 
   border-radius: 10px;
