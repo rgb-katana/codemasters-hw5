@@ -2,9 +2,9 @@ import * as restService from './rest.js';
 
 // селекторы
 const progressCurrentElement = document.querySelector('.progress__current');
+const progressTotalElement = document.querySelector('.quiz__total');
 const scoreElement = document.querySelector('.score');
 const quizBaseElement = document.querySelector('.quiz__base');
-const quizElement = document.querySelector('.quiz');
 const nextButton = document.querySelector('.button-next');
 
 // QUIZ main variables
@@ -12,14 +12,27 @@ let currentQuestion = 0;
 let totalScore = 0;
 
 function generateImageHTML(link, alt) {
-  return `
-  <img
-    class="base__image"
-    src="${link}"
-    alt="${alt}"
-    />
-  `;
+  const imageElement = document.createElement('img');
+  imageElement.src = link;
+  imageElement.alt = alt;
+  imageElement.classList.add(`base__image`);
+
+  quizBaseElement.insertAdjacentHTML(
+    'afterbegin',
+    `<span class="loader quiz__loader"></span>`
+  );
+
+  imageElement.onload = function () {
+    const loader = document.querySelector('.loader');
+    loader.remove();
+    quizBaseElement.prepend(imageElement);
+  };
 }
+
+addEventListener('DOMContentLoaded', async () => {
+  const data = await restService.get('questions');
+  progressTotalElement.innerHTML = `${data.length}`;
+});
 
 function generateQuestionAnswersHTML(question, answerArr) {
   const questionHeading = `<h2 class="base__question">${question}</h2>`;
@@ -49,10 +62,7 @@ async function generateQuestionBlock(question) {
       'afterbegin',
       generateQuestionAnswersHTML(data.question, data.answers)
     );
-    quizBaseElement.insertAdjacentHTML(
-      'afterbegin',
-      generateImageHTML(data.image) /* Тут не используется alt*/
-    );
+    generateImageHTML(data.image, data.altForImage);
   } catch (error) {
     console.error(error);
   }
@@ -108,7 +118,7 @@ function finishGame() {
     </div>
   `;
   const replayButton = `
-    <button type="button" class="quiz__button_main">Сыграть снова</button>
+    <button type="button" class="quiz__button_main" id="start-button">Начать квиз снова</button>
   `;
 
   quizBaseElement.insertAdjacentHTML(
@@ -118,34 +128,46 @@ function finishGame() {
     ${replayButton}
   `
   );
+
+  playGame();
 }
 
-/*
- Не лучшая идея добавлять такой обработчик. Он будет срабатывать на все клики внутри формы, это удар по производительности (небольшой но всё же)
-  Тут стоит получть конкретную кнопку по её id и добавить обработчик конкретно к ней. Тогда еще и проблема с тем что функция делает много всего пропадёт
-*/
-quizElement.addEventListener('click', function (e) {
-  /* Эта функция делает слишком много всего, лучше разбить её на несколько, так и тестировать проще будет*/
+function selectAnswersForQuestions() {
+  const answerButtons = document.querySelectorAll('.quiz__button_secondary');
 
-  if (e.target.classList.contains('quiz__button_main')) {  // Тут лучше пологаться на id поскольку quiz__button_main может быть чем угодно, судя по названию
+  answerButtons.forEach(button => {
+    button.addEventListener('click', function (e) {
+      const chosenAnswer = Number(e.target.dataset.answerNumber);
+      countOneQuestion(chosenAnswer);
+    });
+  });
+}
+
+nextButton.addEventListener('click', async function (e) {
+  e.target.classList.remove('show-button');
+  e.target.classList.add('hide-button');
+
+  updateProgress();
+
+  if (currentQuestion > 10) {
+    finishGame();
+  } else {
+    await generateQuestionBlock(currentQuestion);
+    selectAnswersForQuestions();
+  }
+});
+
+function playGame() {
+  const startButton = document.getElementById('start-button');
+
+  startButton.addEventListener('click', async function (e) {
     currentQuestion = 0;
     totalScore = 0;
     scoreElement.textContent = 0;
     updateProgress();
-    generateQuestionBlock(currentQuestion);
-  }
-  if (e.target.classList.contains('quiz__button_secondary')) {
-    const chosenAnswer = Number(e.target.dataset.answerNumber);
-    countOneQuestion(chosenAnswer);
-  }
-  if (e.target.classList.contains('button-next')) {
-    nextButton.classList.remove('show-button');
-    nextButton.classList.add('hide-button');
-    updateProgress();
-    if (currentQuestion > 10) {
-      finishGame();
-    } else {
-      generateQuestionBlock(currentQuestion);
-    }
-  }
-});
+    await generateQuestionBlock(currentQuestion);
+    selectAnswersForQuestions();
+  });
+}
+
+playGame();
