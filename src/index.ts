@@ -9,7 +9,7 @@ const progressTotalElement: HTMLElement =
   document.querySelector('.quiz__total')!;
 const scoreElement: HTMLElement = document.querySelector('.score')!;
 const quizBaseElement: HTMLElement = document.querySelector('.quiz__base')!;
-const nextButton: HTMLElement = document.querySelector('.button-next')!;
+const nextButton: HTMLButtonElement = document.querySelector('.button-next')!;
 
 // QUIZ main variables
 let currentQuestion: number = 0;
@@ -34,7 +34,7 @@ function generateImageHTML(link: string, alt: string): void {
 }
 
 addEventListener('DOMContentLoaded', async () => {
-  const data = await restService.get('questions');
+  const data = await restService.get<Question[]>('questions');
   progressTotalElement.innerHTML = `${data.length}`;
 });
 
@@ -145,7 +145,7 @@ function selectAnswersForQuestions() {
   );
 
   answerButtons.forEach(button => {
-    button.addEventListener('click', function () {
+    button.addEventListener('click', () => {
       const chosenAnswer = Number(button.dataset.answerNumber);
       countOneQuestion(chosenAnswer);
     });
