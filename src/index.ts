@@ -1,6 +1,8 @@
-import * as restService from './rest.js';
-import { Answer } from './models/answer.model.js';
-import { Question } from './models/question.model.js';
+import * as restService from './rest';
+import { Answer } from './models/answer.model';
+import { Question } from './models/question.model';
+import './styles/normalize.css';
+import './styles/style.css';
 
 // селекторы
 const progressCurrentElement: HTMLElement =
@@ -170,7 +172,7 @@ nextButton.addEventListener('click', async function (e) {
 function playGame() {
   const startButton: HTMLElement = document.getElementById('start-button')!;
 
-  startButton.addEventListener('click', async function (e) {
+  startButton.addEventListener('click', async function () {
     currentQuestion = 0;
     totalScore = 0;
     scoreElement.textContent = '0';
