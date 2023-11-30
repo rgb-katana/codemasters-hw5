@@ -14,8 +14,8 @@ const quizBaseElement: HTMLElement = document.querySelector('.quiz__base')!;
 const nextButton: HTMLButtonElement = document.querySelector('.button-next')!;
 
 // QUIZ main variables
-let currentQuestion: number = 0;
-let totalScore: number = 0;
+export let currentQuestion: number = 0;
+export let totalScore: number = 0;
 
 function generateImageHTML(link: string, alt: string): void {
   const imageElement = document.createElement('img');
@@ -62,7 +62,7 @@ function generateQuestionAnswersHTML(question: string, answerArr: string[]) {
   `;
 }
 
-async function generateQuestionBlock(question: string) {
+export async function generateQuestionBlock(question: string) {
   quizBaseElement.innerHTML = '';
 
   try {
@@ -109,12 +109,12 @@ async function countOneQuestion(userPick: number) {
   nextButton.classList.add('show-button');
 }
 
-function updateProgress() {
+export function updateProgress() {
   currentQuestion++;
   progressCurrentElement.textContent = String(currentQuestion);
 }
 
-function finishGame() {
+export async function finishGame() {
   quizBaseElement.innerHTML = '';
 
   progressCurrentElement.textContent = '10';
@@ -154,7 +154,7 @@ function selectAnswersForQuestions() {
   });
 }
 
-nextButton.addEventListener('click', async function (e) {
+nextButton?.addEventListener('click', async function (e) {
   const target = e.target as Element;
   target.classList.remove('show-button');
   target.classList.add('hide-button');
@@ -172,7 +172,7 @@ nextButton.addEventListener('click', async function (e) {
 function playGame() {
   const startButton: HTMLElement = document.getElementById('start-button')!;
 
-  startButton.addEventListener('click', async function () {
+  startButton?.addEventListener('click', async function () {
     currentQuestion = 0;
     totalScore = 0;
     scoreElement.textContent = '0';
