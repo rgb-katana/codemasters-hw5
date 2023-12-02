@@ -11,7 +11,8 @@ const progressTotalElement: HTMLElement =
   document.querySelector('.quiz__total')!;
 const scoreElement: HTMLElement = document.querySelector('.score')!;
 const quizBaseElement: HTMLElement = document.querySelector('.quiz__base')!;
-const nextButton: HTMLButtonElement = document.querySelector('.button-next')!;
+export const nextButton: HTMLButtonElement =
+  document.querySelector('.button-next')!;
 
 // QUIZ main variables
 export let currentQuestion: number = 0;
@@ -101,7 +102,7 @@ async function countOneQuestion(userPick: number) {
   const allButtonElements: NodeListOf<HTMLButtonElement> =
     document.querySelectorAll('.quiz__button_secondary');
 
-  allButtonElements.forEach(button => {
+  allButtonElements.forEach((button) => {
     button.disabled = true;
   });
 
@@ -146,7 +147,7 @@ function selectAnswersForQuestions() {
     '.quiz__button_secondary'
   );
 
-  answerButtons.forEach(button => {
+  answerButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const chosenAnswer = Number(button.dataset.answerNumber);
       countOneQuestion(chosenAnswer);

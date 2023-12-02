@@ -117,8 +117,7 @@ describe('Quiz', () => {
   });
 
   it('Next button should not be displayed if progress > 10', () => {
-    const nextButton: HTMLButtonElement | null =
-      document.querySelector('.button-next')!;
+    const nextButton = app.nextButton;
 
     if (app.currentQuestion > 10) {
       expect(nextButton.classList).toContain('hide-button');
@@ -128,13 +127,15 @@ describe('Quiz', () => {
   it('Next button should update progress and load new question if progress < 10', () => {
     const spyUpdate = jest.spyOn(app, 'updateProgress');
     const spyGenerateQuestionBlock = jest.spyOn(app, 'generateQuestionBlock');
-    const nextButton: HTMLButtonElement | null =
-      document.querySelector('.button-next');
+    const nextButton = app.nextButton;
 
     if (app.currentQuestion < 10 && app.currentQuestion > 0) {
       nextButton!.addEventListener('click', () => {
         expect(spyUpdate).toHaveBeenCalled();
         expect(spyGenerateQuestionBlock).toHaveBeenCalled();
+        expect(spyGenerateQuestionBlock).toHaveBeenCalledWith(
+          app.currentQuestion
+        );
       });
     }
   });
